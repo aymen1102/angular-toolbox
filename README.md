@@ -1,27 +1,51 @@
-# AngularToolbox
+First steps :
+- install node : node -v
+- install npm : npm -v
+- install angular CLI : npm install -g @angular/cli 
+- check the version of angular CLI : ng version
+- create a project : ng new my-app
+- run the application : ng serve
+- you can now show your first app  : http://localhost:4200
+- install a different version of Angular CLI : npm install -g @angular/cli@9.0
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
-## Development server
+Files and folder structure :
+- package.json : project name, version, app commands, dependencies...
+- node_modules : contains all libraries
+- src : contains the app code
+- src/app : contains all the components
+- src/assets : public files likes images , css...
+- src/envrionnement : contains all environnement parameters
+- src/index.html : first html page to be run
+- src/style.css : contains global style
+- package-lock.json : contains all details of dependencies
+- angular.json : contains all the application configuration
+- tsconfig.json : contains typescript configuration
+- .browserslistrc : contains the browser configuration
+- karma.conf.js : contain testin configuration
+- src/polyfills.ts : contains polyfills needed by angular and it is loaded before the app
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+Interpolation : lets you incorporate dynamic string values into your HTML templates.
+Interpolation refers to embedding expressions into marked up text. By default, interpolation uses the double curly braces {{ and }} as delimiters.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+Angular CLI & important commands :
+ng help : show all CLI commands 
+ng generate component <component name>
+ng g c <component name>
+ng generate module <module name>
+ng g c <module name>\<component name> : create a component inside module
+ng g class <class name>
+ng g service <service name>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+Component : Components are the most basic UI building block of an Angular app. An Angular app contains a tree of Angular components. Angular components are a subset of directives, always associated with a template. Unlike other directives, only one component can be instantiated for a given element in a template.A component must belong to an NgModule in order for it to be available to another component or application.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Inline style Component :
+Create a Component without style file : ng g c inline-style-component --inline-style
 
-## Running end-to-end tests
+Inline template Component :
+Create a Component without template file : ng g c inline-style-component --inline-style
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Module : a module is a mechanism to group components, directives, pipes and services that are related, in such a way that can be combined with other modules to create an application.
