@@ -37,8 +37,117 @@
 <h4 (mouseover)="getData('mouse over')">Mouse over here</h4>
 
 <!--Get input field value -->
-<h1>IV - get input field value  </h1>
+<h1>IV - Get input field value  </h1>
 <input #box5 type="text" placeholder="Enter name" name="username" (keyup)="getValue(box5.value)"/><br/>
 <input #box6 type="text" placeholder="Enter name" name="username"/>
 <button (click)="getValue(box6.value)">Click me !</button>
 <h4>Box value is : {{displayVal}}</h4>
+
+<!--Counter exercice -->
+<h1>V - Counter exercice </h1>
+<button (click)="counter('add')">+</button>
+<h4>Count : {{count}}</h4>
+<button (click)="counter('minus')">-</button>
+
+
+<!--How to start with style -->
+<h1>VI - How to start with style </h1>
+<h4 class="heading">Basic style</h4>
+
+
+<!--Property Binding -->
+<h1>VI - Property Binding </h1>
+<input type="text" value={{name}} disabled={{disabled}}/><br/>
+<input type="text" [value]=name [disabled]=disabled/>
+
+
+<!--if-Else -->
+<h1>VI - If Else </h1>
+<h4 *ngIf="show; then ifBlock else elseBlock"></h4>
+<ng-template #ifBlock>
+    <h4>i'am inside the if condition</h4>
+</ng-template>
+<ng-template #elseBlock>
+    <h4>i'am inside the else</h4>
+</ng-template>
+
+
+<!--Multiple condition -->
+<h1>VII - If Else </h1>
+<ng-template [ngIf]="color==='red'">
+    <h4 style="color:red">Red color</h4>
+</ng-template>
+<ng-template [ngIf]="color==='green'">
+    <h4 style="color:green">Green color</h4>
+</ng-template>
+<ng-template [ngIf]="color==='blue'">
+    <h4 style="color:blue">Blue color</h4>
+</ng-template>
+
+
+<!--Switch case -->
+<h1>VII - Switch case </h1>
+<div [ngSwitch]="color">
+    <h4 *ngSwitchCase="'red'" style="color:red">Red color</h4>
+    <h4 *ngSwitchCase="'blue'" style="color:blue">Blue color</h4>
+    <h4 *ngSwitchCase="'green'" style="color:green">Green color</h4>
+    <h4 *ngSwitchDefault>Unknown color</h4>
+</div>
+
+
+<!--Loop-->
+<h1>VIII - Loop in Angular </h1>
+<h4 *ngFor="let item of users">Name is :{{item}}</h4>
+<h4 *ngFor="let item of userDetails">
+    Details is : {{item.name}} ____ {{item.email}} ____ {{item.phone}}
+</h4>
+
+
+<!-- Nested loop-->
+<h1>VIII - Nested Loop </h1>
+<ul *ngFor="let item of userData">
+    <li>{{item.name}}</li>
+    <li>{{item.email}}</li>
+    <li>{{item.phone}}</li>
+    <ul *ngFor="let account of item.accounts">
+        <li>{{account}}</li>
+    </ul>
+</ul>
+
+
+<!-- Style binding & dynamic style-->
+<h1>VIII - Style binding & dynamic style- </h1>
+<h4 [style.color]="'green'">Blue color</h4>
+<h4 [style.color]="color">Blue color</h4>
+<button (click)="updateColor()">Update color</button>
+
+
+
+<!-- Header -->
+<h1>VIII - Header </h1>
+<app-header></app-header>
+
+
+<!-- Basic angular form -->
+<h1>VIII - Basic angular form n </h1>
+<app-header></app-header>
+
+
+<!-- basic Form -->
+<h1>VIII - Basic angular form </h1>
+<form #basicForm="ngForm" (submit)="geDataForm(basicForm.value)">
+    <input ngModel type="text" name="user" placeholder="Enter user name"/><br/><br/>
+    <input ngModel type="text" name="email" placeholder="Enter user email"/><br/><br/>
+    <input ngModel type="text" name="password" placeholder="Enter user password"/><br/><br/>
+    <button>Register</button>
+</form>
+<ul>
+    <li>{{userDataForm.user}}</li>
+    <li>{{userDataForm.email}}</li>
+    <li>{{userDataForm.password}}</li>
+</ul>
+
+
+
+<!-- Toggle Element -->
+<h1>VIII - Toggle Element   </h1>
