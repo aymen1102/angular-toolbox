@@ -7,18 +7,22 @@ import { MyFirstComponentComponent } from './my-first-component/my-first-compone
 import { InlineStyleComponentComponent } from './inline-style-component/inline-style-component.component';
 import { InlineTemplateComponentComponent } from './inline-template-component/inline-template-component.component';
 import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
+import { HeaderComponent } from './header/header.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     MyFirstComponentComponent,
     InlineStyleComponentComponent,
-    InlineTemplateComponentComponent
+    InlineTemplateComponentComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MyFirstModuleModule
+    MyFirstModuleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
