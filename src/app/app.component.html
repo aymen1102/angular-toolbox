@@ -1,5 +1,5 @@
 <!--Interpolation-->
-<h1>I - Interpolation</h1>
+<h1>Interpolation</h1>
 <h4>Hello Angular {{version}} </h4>
 <h4>{{getVal()}}</h4>
 <h4>{{6+2}}</h4>
@@ -11,23 +11,27 @@
 <!--<h4>{{num++}}</h4>    Compile Error-->
 <h4 class="{{version}}">Hello Angular {{version}}</h4>
 
+
 <!--Component-->
-<h1>II - Component</h1>
+<h1>Component</h1>
 <app-my-first-component></app-my-first-component>
 <app-inline-style-component></app-inline-style-component>
 <app-inline-template-component></app-inline-template-component>
 
+
 <!--Module-->
-<h1>III - Module</h1>
+<h1>Module</h1>
 <app-component-inside-module></app-component-inside-module>
 
+
 <!--Function-->
-<h1>IV - Functions</h1>
+<h1>Functions</h1>
 <button (click)="getName()">Call function</button><br/>
 <button (click)="getAge(18)">Call function with parameter</button>
 
+
 <!--Important Events -->
-<h1>IV - Important Events  </h1>
+<h1>Important Events  </h1>
 <button (click)="getData('button click event')">Call function</button><br/>
 <input type ="text" placeholder="keyup" (keyup)="getData('keyup')"/><br/>
 <input #box1 type ="text" placeholder="keyup box" (keyup)="getData(box1.value)"/><br/>
@@ -36,33 +40,35 @@
 <input #box4 type ="text" placeholder="input box" (input)="getData(box4.value)"/><br/>
 <h4 (mouseover)="getData('mouse over')">Mouse over here</h4>
 
+
 <!--Get input field value -->
-<h1>IV - Get input field value  </h1>
+<h1>Get input field value  </h1>
 <input #box5 type="text" placeholder="Enter name" name="username" (keyup)="getValue(box5.value)"/><br/>
 <input #box6 type="text" placeholder="Enter name" name="username"/>
 <button (click)="getValue(box6.value)">Click me !</button>
 <h4>Box value is : {{displayVal}}</h4>
 
+
 <!--Counter exercice -->
-<h1>V - Counter exercice </h1>
+<h1>Counter exercice </h1>
 <button (click)="counter('add')">+</button>
 <h4>Count : {{count}}</h4>
 <button (click)="counter('minus')">-</button>
 
 
 <!--How to start with style -->
-<h1>VI - How to start with style </h1>
+<h1>How to start with style </h1>
 <h4 class="heading">Basic style</h4>
 
 
 <!--Property Binding -->
-<h1>VI - Property Binding </h1>
+<h1>Property Binding </h1>
 <input type="text" value={{name}} disabled={{disabled}}/><br/>
 <input type="text" [value]=name [disabled]=disabled/>
 
 
 <!--if-Else -->
-<h1>VI - If Else </h1>
+<h1>If Else </h1>
 <h4 *ngIf="show; then ifBlock else elseBlock"></h4>
 <ng-template #ifBlock>
     <h4>i'am inside the if condition</h4>
@@ -73,7 +79,7 @@
 
 
 <!--Multiple condition -->
-<h1>VII - If Else </h1>
+<h1>If Else: Multiple condition </h1>
 <ng-template [ngIf]="color==='red'">
     <h4 style="color:red">Red color</h4>
 </ng-template>
@@ -86,7 +92,7 @@
 
 
 <!--Switch case -->
-<h1>VII - Switch case </h1>
+<h1>Switch case </h1>
 <div [ngSwitch]="color">
     <h4 *ngSwitchCase="'red'" style="color:red">Red color</h4>
     <h4 *ngSwitchCase="'blue'" style="color:blue">Blue color</h4>
@@ -96,7 +102,7 @@
 
 
 <!--Loop-->
-<h1>VIII - Loop in Angular </h1>
+<h1>Loop in Angular </h1>
 <h4 *ngFor="let item of users">Name is :{{item}}</h4>
 <h4 *ngFor="let item of userDetails">
     Details is : {{item.name}} ____ {{item.email}} ____ {{item.phone}}
@@ -104,7 +110,7 @@
 
 
 <!-- Nested loop-->
-<h1>VIII - Nested Loop </h1>
+<h1>Nested Loop </h1>
 <ul *ngFor="let item of userData">
     <li>{{item.name}}</li>
     <li>{{item.email}}</li>
@@ -116,25 +122,19 @@
 
 
 <!-- Style binding & dynamic style-->
-<h1>VIII - Style binding & dynamic style- </h1>
+<h1>Style binding & dynamic style- </h1>
 <h4 [style.color]="'green'">Blue color</h4>
 <h4 [style.color]="color">Blue color</h4>
 <button (click)="updateColor()">Update color</button>
 
 
-
 <!-- Header -->
-<h1>VIII - Header </h1>
-<app-header></app-header>
-
-
-<!-- Basic angular form -->
-<h1>VIII - Basic angular form n </h1>
+<h1>Header </h1>
 <app-header></app-header>
 
 
 <!-- basic Form -->
-<h1>VIII - Basic angular form </h1>
+<h1>Basic angular form </h1>
 <form #basicForm="ngForm" (submit)="geDataForm(basicForm.value)">
     <input ngModel type="text" name="user" placeholder="Enter user name"/><br/><br/>
     <input ngModel type="text" name="email" placeholder="Enter user email"/><br/><br/>
@@ -148,6 +148,167 @@
 </ul>
 
 
-
 <!-- Toggle Element -->
-<h1>VIII - Toggle Element   </h1>
+<h1>Toggle Element   </h1>
+<button (click)="toggle()">Toggle</button>
+<h4 *ngIf="display">Heading tag</h4>
+
+
+<!-- Bootstrap -->
+<h1>Bootstrap   </h1>
+<p>
+    <ngb-alert [dismissible]="false">
+      <strong>Warning!</strong> Better check yourself, you're not looking too good.
+    </ngb-alert>
+</p>
+
+
+<!-- Material ui -->
+<h1>Material ui   </h1>
+<mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+<section>
+    <div class="example-button-row">
+      <button mat-button>Basic</button>
+      <button mat-button color="primary">Primary</button>
+      <button mat-button color="accent">Accent</button>
+      <button mat-button color="warn">Warn</button>
+      <button mat-button disabled>Disabled</button>
+      <a mat-button href="https://www.google.com/" target="_blank">Link</a>
+    </div>
+  </section>
+
+
+<!-- Todo list in angular -->
+<h1>Todo list in angular   </h1>
+<input type="text" placeholder="Enter new task" #task/><br/><br/>
+<button (click)="addTask(task.value)">Add new task</button><br/><br/>
+<ul *ngFor="let item of list">
+    <li>{{item.name}}<button (click)="removeTask(item.id)">Remove</button></li>
+</ul>
+ 
+
+<!-- Pass data child to component -->
+<h1>Pass data child to component</h1>
+<app-child [item]="data"></app-child>
+<button (click)="updateData()">Update Child Component</button>
+
+
+<!-- Reusable component -->
+<h1>Reusable component   </h1>
+<ul *ngFor="let user of usersDetails">
+    <app-user-details [item]="user"></app-user-details>
+</ul>
+
+
+<!-- Send data child to parent component -->
+<h1>Send data child to parent component   </h1>
+<app-child (updateDataEvent)="updateData0($event)"></app-child>
+<h4>{{data0}}</h4>
+
+
+<!-- Two way binding -->
+<h1>Two way binding   </h1>
+<input type="text" [(ngModel)]="product">
+<h3>{{product}}</h3>
+
+
+<!-- Template reference variable -->
+<h1>Template reference variable   </h1>
+<input type="text" #input>
+<button (click)="getValue0(input)">Click me</button>
+
+<!-- basic typescript for angular -->
+<h1>basic typescript for angular</h1>
+
+
+<!-- basic of pipes in angular -->
+<h1>basic of pipes in angular   </h1>
+<h4>{{title}}</h4>
+<h4>{{title|lowercase}}</h4>
+<h4>{{title|uppercase}}</h4>
+<h4>{{today}}</h4>
+<h4>{{today|date}}</h4>
+<h4>{{today|date:'fullDate'}}</h4>
+<h4>{{capString(title)}}</h4>
+
+
+<!-- advance pipes -->
+<h1>Advance pipes   </h1>
+<h4>{{text|slice :11:16}}</h4>
+<h4>{{person}}</h4>
+<h4>{{person|json}}</h4>
+<h4>{{person|json|uppercase}}</h4>
+<h4>{{003.3400|number:'1.2-3'}}</h4>
+<h4>{{100|currency:'USD'}}</h4>
+
+
+<!-- custom pipes -->
+<h1>Custom pipes   </h1>
+<h4>{{30|convertUsdToGbp:0.76}}</h4>
+ 
+
+<!-- Forms: Template driven form -->
+<h1>Forms: Template driven form   </h1>
+<form #loginForm0="ngForm" (ngSubmit)="loginUser(loginForm0.value)">
+    <input type="text" name="name" placeholder="Enter name" ngModel><br/><br/>
+    <input type="text" name="password" placeholder="Enter password" ngModel><br/><br/>
+    <button>Login</button>
+</form> 
+
+<!-- Forms: Template driven form for validation -->
+<h1>Forms: Template driven form for validation   </h1>
+<form #loginForm1="ngForm" (ngSubmit)="loginUser(loginForm1.value)">
+    <input type="email" required #email="ngModel" email name="email" placeholder="Enter email" ngModel>
+    <br/><span *ngIf="email.invalid && email.touched" style="color:red">Please enter a valid input</span><br/>
+    <input type="password" name="password" minlength=4 required #password="ngModel"  placeholder="Enter password" ngModel>
+    <br/><span *ngIf="password.invalid && password.touched" style="color:red">Please enter a valid input</span><br/>
+    <button [disabled]="loginForm1.invalid">Login</button>
+</form>
+
+
+<!-- Forms: Reactive form in angular -->
+<h1>Forms: Reactive form in angular</h1>
+<form [formGroup]="loginForm2" (ngSubmit)="loginUserReactive()">
+    <input type="text" name="name" placeholder="Enter name" formControlName="user"><br/><br/>
+    <input type="password" name="password" placeholder="Enter password" formControlName="password"><br/><br/>
+    <button>Login</button>
+</form> 
+
+
+<!-- Forms: Reactive validations -->
+<h1>Forms: Reactive form valiation</h1>
+<form [formGroup]="loginForm3" (ngSubmit)="loginUserReactiveValidation()">
+    <input type="text" name="name" placeholder="Enter name" formControlName="user">
+    <br/><span *ngIf="user && user.invalid && user.touched" style="color:red">This input is not valid</span><br/>
+    <input type="password" name="password" placeholder="Enter password" formControlName="password">
+    <br/><span *ngIf="password && password.invalid && password.touched" style="color:red">Password input is not valid</span><br/>
+    <button [disabled]="loginForm3.invalid">Login</button>
+</form>
+
+
+<!-- Directives -->
+<h1>Directives</h1>
+<h4 *ngIf="true">this tag use a directive ngIf</h4>
+<h4 appRedElement>this tag use a custom directive</h4>
+
+
+
+<!-- Routing : Dynamic Routing & 404 Page & Child routes -->
+<h1>Routing : Dynamic Routing & 404 Page & Child routes</h1>
+<a routerLink="home">Home</a><br>
+<a routerLink="user/10">User</a><br>
+<a routerLink="about">About</a><br>
+<a routerLink="something">Contact Page</a><br><br>
+
+<a routerLink="user/10">Peter</a><br>
+<a routerLink="user/20">Sam</a><br>
+<a routerLink="user/30">Bruce</a><br><br><br>
+
+<router-outlet></router-outlet>
+
+
+<!-- Service -->
+<h1>Service</h1>
+<ul >
+    <li>{{member|json}}</li>
+</ul>
