@@ -25,6 +25,9 @@ import { NoPageComponent } from './no-page/no-page.component';
 import { AboutCompanyComponent } from './about-company/about-company.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CustomersModule } from './customers/customers.module';
+import { AdminListComponent } from './admin-list/admin-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,9 @@ import { HttpClientModule } from '@angular/common/http';
     UserComponent,
     NoPageComponent,
     AboutCompanyComponent,
-    AboutMeComponent
+    AboutMeComponent,
+    AdminListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +59,8 @@ import { HttpClientModule } from '@angular/common/http';
     MatSliderModule,
     MatButtonModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomersModule
   ],
   providers: [],
   bootstrap: [AppComponent]
