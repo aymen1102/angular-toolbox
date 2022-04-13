@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
 import { FormsModule, NgForm,FormGroup,FormControl,Validators} from '@angular/forms';
 import { MemberDataService } from './services/member-data.service';
 import { userInformation } from './interfaces/userInformation';
+import { AdminListComponent } from './admin-list/admin-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +12,16 @@ import { userInformation } from './interfaces/userInformation';
 })
 export class AppComponent {
 
-  constructor(private memberData:MemberDataService){
+  constructor(
+    private memberData:MemberDataService,
+    private vcr:ViewContainerRef,
+    private cfr:ComponentFactoryResolver){
     memberData.member().subscribe((data)=>{
       this.member=data;
       console.warn(data)
     });
+
+    
   }
 
 
@@ -217,11 +224,11 @@ export class AppComponent {
   }
 
 
-  //Service
+  // Service
   member:any;
 
 
-  //Model and interfaces
+  // Model and interfaces
   getUserInformations(){
     const userInformation:userInformation = {
       id:10,
@@ -232,6 +239,21 @@ export class AppComponent {
   }
 
 
-  //Recap Module and Routing
+  // Lazy loading component in angular
+  async loadAdmin(){
+    this.vcr.clear();
+    const {AdminListComponent} = await import('./admin-list/admin-list.component');
+    this.vcr.createComponent(
+      this.cfr.resolveComponentFactory(AdminListComponent)
+    )
+  }
+  
+  async loadUser(){
+    this.vcr.clear();
+    const {UserListComponent} = await import('./user-list/user-list.component');
+    this.vcr.createComponent(
+      this.cfr.resolveComponentFactory(UserListComponent)
+    )
+  }
 
 }

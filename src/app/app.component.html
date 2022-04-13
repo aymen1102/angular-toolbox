@@ -296,14 +296,23 @@
 <!-- Routing : Dynamic Routing & 404 Page & Child routes -->
 <h1>Routing : Dynamic Routing & 404 Page & Child routes</h1>
 <a routerLink="home">Home</a><br>
-<a routerLink="user/10">User</a><br>
-<a routerLink="about">About</a><br>
-<a routerLink="something">Contact Page</a><br><br>
+<a routerLink="about">About</a><br><br><br>
 
 <a routerLink="user/10">Peter</a><br>
 <a routerLink="user/20">Sam</a><br>
 <a routerLink="user/30">Bruce</a><br><br><br>
+<ul>
+    <li><a routerLink="login">Go to Login Page</a></li>
+    <li><a routerLink="list">Go to List Page</a></li>
+</ul>
 
+
+<!-- Lazy loading in Angular -->
+<h1>Lazy loading in Angular</h1>
+<ul>
+    <li><a routerLink="admin/authentification">Authentification</a></li>
+    <li><a routerLink="admin/register">Register</a></li>
+</ul>
 <router-outlet></router-outlet>
 
 
@@ -312,3 +321,9 @@
 <ul >
     <li>{{member|json}}</li>
 </ul>
+
+
+<!-- Lazy loading component in angular -->
+<h1>Lazy loading component in angular</h1>
+<button (click)="loadAdmin()">Load Admin component</button>
+<button (click)="loadUser()">Load User component</button>

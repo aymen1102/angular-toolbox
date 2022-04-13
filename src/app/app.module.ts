@@ -26,8 +26,7 @@ import { AboutCompanyComponent } from './about-company/about-company.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersModule } from './customers/customers.module';
-import { AdminListComponent } from './admin-list/admin-list.component';
-import { UserListComponent } from './user-list/user-list.component';
+
 
 @NgModule({
   declarations: [
@@ -45,9 +44,7 @@ import { UserListComponent } from './user-list/user-list.component';
     UserComponent,
     NoPageComponent,
     AboutCompanyComponent,
-    AboutMeComponent,
-    AdminListComponent,
-    UserListComponent
+    AboutMeComponent
   ],
   imports: [
     BrowserModule,

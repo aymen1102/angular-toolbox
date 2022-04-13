@@ -6,14 +6,22 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { NoPageComponent } from './no-page/no-page.component';
 import { UserComponent } from './user/user.component';
+import { ListComponent } from './customers/list/list.component';
+import { LoginComponent } from './customers/login/login.component';
 
 const routes: Routes = [
   {
     component:AboutComponent,
     path:'about',
     children:[
-      {path:'company', component:AboutCompanyComponent},
-      {path:'me', component:AboutMeComponent }
+      {
+        component:AboutCompanyComponent,
+        path:'company' 
+      },
+      {
+        component:AboutMeComponent,
+        path:'me'
+      }
     ]
   },
   {
@@ -26,7 +34,20 @@ const routes: Routes = [
   },
   {
     component:NoPageComponent,
-    path:'**'
+    path:'*'
+  },
+  {
+    component:ListComponent,
+    path:'list'
+  },
+  {
+    component:LoginComponent,
+    path:'login'
+  },
+  {
+    path:'admin',
+    loadChildren:()=>import('./admin/admin.module')
+          .then(mod=>mod.AdminModule)
   }
 ];
 
