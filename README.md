@@ -4,7 +4,7 @@ First steps :
 - install angular CLI : npm install -g @angular/cli 
 - check the version of angular CLI : ng version
 - create a project : ng new my-app
-- run the application : ng serve
+- run the application : npm run ng serve
 - you can now show your first app  : http://localhost:4200
 - install a different version of Angular CLI : npm install -g @angular/cli@9.0
 
