@@ -13,6 +13,7 @@
 
 
 <!--Component-->
+<br/><br/><br/><br/><br/>
 <h1>Component</h1>
 <app-my-first-component></app-my-first-component>
 <app-inline-style-component></app-inline-style-component>
@@ -20,36 +21,41 @@
 
 
 <!--Module-->
+<br/><br/><br/><br/><br/>
 <h1>Module</h1>
 <app-component-inside-module></app-component-inside-module>
 
 
 <!--Function-->
+<br/><br/><br/><br/><br/>
 <h1>Functions</h1>
-<button (click)="getName()">Call function</button><br/>
+<button (click)="getName()">Call function</button><br/><br/>
 <button (click)="getAge(18)">Call function with parameter</button>
 
 
 <!--Important Events -->
+<br/><br/><br/><br/><br/>
 <h1>Important Events  </h1>
-<button (click)="getData('button click event')">Call function</button><br/>
-<input type ="text" placeholder="keyup" (keyup)="getData('keyup')"/><br/>
-<input #box1 type ="text" placeholder="keyup box" (keyup)="getData(box1.value)"/><br/>
-<input #box2 type ="text" placeholder="keydown box" (keydown)="getData(box2.value)"/><br/>
-<input #box3 type ="text" placeholder="blur box" (blur)="getData(box3.value)"/><br/>
-<input #box4 type ="text" placeholder="input box" (input)="getData(box4.value)"/><br/>
+<button (click)="getData('button click event')">Call function</button><br/><br/>
+<input type ="text" placeholder="keyup" (keyup)="getData('keyup')"/><br/><br/>
+<input #box1 type ="text" placeholder="keyup box" (keyup)="getData(box1.value)"/><br/><br/>
+<input #box2 type ="text" placeholder="keydown box" (keydown)="getData(box2.value)"/><br/><br/>
+<input #box3 type ="text" placeholder="blur box" (blur)="getData(box3.value)"/><br/><br/>
+<input #box4 type ="text" placeholder="input box" (input)="getData(box4.value)"/><br/><br/>
 <h4 (mouseover)="getData('mouse over')">Mouse over here</h4>
 
 
 <!--Get input field value -->
+<br/><br/><br/><br/><br/>
 <h1>Get input field value  </h1>
-<input #box5 type="text" placeholder="Enter name" name="username" (keyup)="getValue(box5.value)"/><br/>
-<input #box6 type="text" placeholder="Enter name" name="username"/>
-<button (click)="getValue(box6.value)">Click me !</button>
-<h4>Box value is : {{displayVal}}</h4>
+<input #box5 type="text" placeholder="Enter name" name="username" (keyup)="getValue(box5.value)"/><br/><br/>
+<input #box6 type="text" placeholder="Enter name" name="username"/><br/><br/>
+<button (click)="getValue(box6.value)">Click me !</button><br/><br/>
+<h4>Box value is : {{displayVal}}</h4><br/><br/>
 
 
 <!--Counter exercice -->
+<br/><br/><br/><br/><br/>
 <h1>Counter exercice </h1>
 <button (click)="counter('add')">+</button>
 <h4>Count : {{count}}</h4>
@@ -57,17 +63,20 @@
 
 
 <!--How to start with style -->
+<br/><br/><br/><br/><br/>
 <h1>How to start with style </h1>
 <h4 class="heading">Basic style</h4>
 
 
 <!--Property Binding -->
+<br/><br/><br/><br/><br/>
 <h1>Property Binding </h1>
-<input type="text" value={{name}} disabled={{disabled}}/><br/>
+<input type="text" value={{name}} disabled={{disabled}}/><br/><br/>
 <input type="text" [value]=name [disabled]=disabled/>
 
 
 <!--if-Else -->
+<br/><br/><br/><br/><br/>
 <h1>If Else </h1>
 <h4 *ngIf="show; then ifBlock else elseBlock"></h4>
 <ng-template #ifBlock>
@@ -79,6 +88,7 @@
 
 
 <!--Multiple condition -->
+<br/><br/><br/><br/><br/>
 <h1>If Else: Multiple condition </h1>
 <ng-template [ngIf]="color==='red'">
     <h4 style="color:red">Red color</h4>
@@ -92,6 +102,7 @@
 
 
 <!--Switch case -->
+<br/><br/><br/><br/><br/>
 <h1>Switch case </h1>
 <div [ngSwitch]="color">
     <h4 *ngSwitchCase="'red'" style="color:red">Red color</h4>
@@ -102,6 +113,7 @@
 
 
 <!--Loop-->
+<br/><br/><br/><br/><br/>
 <h1>Loop in Angular </h1>
 <h4 *ngFor="let item of users">Name is :{{item}}</h4>
 <h4 *ngFor="let item of userDetails">
@@ -110,6 +122,7 @@
 
 
 <!-- Nested loop-->
+<br/><br/><br/><br/><br/>
 <h1>Nested Loop </h1>
 <ul *ngFor="let item of userData">
     <li>{{item.name}}</li>
@@ -122,6 +135,7 @@
 
 
 <!-- Style binding & dynamic style-->
+<br/><br/><br/><br/><br/>
 <h1>Style binding & dynamic style- </h1>
 <h4 [style.color]="'green'">Blue color</h4>
 <h4 [style.color]="color">Blue color</h4>
@@ -129,11 +143,13 @@
 
 
 <!-- Header -->
+<br/><br/><br/><br/><br/>
 <h1>Header </h1>
 <app-header></app-header>
 
 
 <!-- basic Form -->
+<br/><br/><br/><br/><br/>
 <h1>Basic angular form </h1>
 <form #basicForm="ngForm" (submit)="geDataForm(basicForm.value)">
     <input ngModel type="text" name="user" placeholder="Enter user name"/><br/><br/>
@@ -149,12 +165,14 @@
 
 
 <!-- Toggle Element -->
+<br/><br/><br/><br/><br/>
 <h1>Toggle Element   </h1>
 <button (click)="toggle()">Toggle</button>
 <h4 *ngIf="display">Heading tag</h4>
 
 
 <!-- Bootstrap -->
+<br/><br/><br/><br/><br/>
 <h1>Bootstrap   </h1>
 <p>
     <ngb-alert [dismissible]="false">
@@ -164,6 +182,7 @@
 
 
 <!-- Material ui -->
+<br/><br/><br/><br/><br/>
 <h1>Material ui   </h1>
 <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
 <section>
@@ -179,6 +198,7 @@
 
 
 <!-- Todo list in angular -->
+<br/><br/><br/><br/><br/>
 <h1>Todo list in angular   </h1>
 <input type="text" placeholder="Enter new task" #task/><br/><br/>
 <button (click)="addTask(task.value)">Add new task</button><br/><br/>
@@ -188,12 +208,14 @@
  
 
 <!-- Pass data child to component -->
+<br/><br/><br/><br/><br/>
 <h1>Pass data child to component</h1>
 <app-child [item]="data"></app-child>
 <button (click)="updateData()">Update Child Component</button>
 
 
 <!-- Reusable component -->
+<br/><br/><br/><br/><br/>
 <h1>Reusable component   </h1>
 <ul *ngFor="let user of usersDetails">
     <app-user-details [item]="user"></app-user-details>
@@ -201,27 +223,32 @@
 
 
 <!-- Send data child to parent component -->
+<br/><br/><br/><br/><br/>
 <h1>Send data child to parent component   </h1>
 <app-child (updateDataEvent)="updateData0($event)"></app-child>
 <h4>{{data0}}</h4>
 
 
 <!-- Two way binding -->
+<br/><br/><br/><br/><br/>
 <h1>Two way binding   </h1>
 <input type="text" [(ngModel)]="product">
 <h3>{{product}}</h3>
 
 
 <!-- Template reference variable -->
+<br/><br/><br/><br/><br/>
 <h1>Template reference variable   </h1>
 <input type="text" #input>
 <button (click)="getValue0(input)">Click me</button>
 
 <!-- basic typescript for angular -->
+<br/><br/><br/><br/><br/>
 <h1>basic typescript for angular</h1>
 
 
 <!-- basic of pipes in angular -->
+<br/><br/><br/><br/><br/>
 <h1>basic of pipes in angular   </h1>
 <h4>{{title}}</h4>
 <h4>{{title|lowercase}}</h4>
@@ -233,6 +260,7 @@
 
 
 <!-- advance pipes -->
+<br/><br/><br/><br/><br/>
 <h1>Advance pipes   </h1>
 <h4>{{text|slice :11:16}}</h4>
 <h4>{{person}}</h4>
@@ -243,11 +271,13 @@
 
 
 <!-- custom pipes -->
+<br/><br/><br/><br/><br/>
 <h1>Custom pipes   </h1>
 <h4>{{30|convertUsdToGbp:0.76}}</h4>
  
 
 <!-- Forms: Template driven form -->
+<br/><br/><br/><br/><br/>
 <h1>Forms: Template driven form   </h1>
 <form #loginForm0="ngForm" (ngSubmit)="loginUser(loginForm0.value)">
     <input type="text" name="name" placeholder="Enter name" ngModel><br/><br/>
@@ -256,6 +286,7 @@
 </form> 
 
 <!-- Forms: Template driven form for validation -->
+<br/><br/><br/><br/><br/>
 <h1>Forms: Template driven form for validation   </h1>
 <form #loginForm1="ngForm" (ngSubmit)="loginUser(loginForm1.value)">
     <input type="email" required #email="ngModel" email name="email" placeholder="Enter email" ngModel>
@@ -267,6 +298,7 @@
 
 
 <!-- Forms: Reactive form in angular -->
+<br/><br/><br/><br/><br/>
 <h1>Forms: Reactive form in angular</h1>
 <form [formGroup]="loginForm2" (ngSubmit)="loginUserReactive()">
     <input type="text" name="name" placeholder="Enter name" formControlName="user"><br/><br/>
@@ -276,6 +308,7 @@
 
 
 <!-- Forms: Reactive validations -->
+<br/><br/><br/><br/><br/>
 <h1>Forms: Reactive form valiation</h1>
 <form [formGroup]="loginForm3" (ngSubmit)="loginUserReactiveValidation()">
     <input type="text" name="name" placeholder="Enter name" formControlName="user">
@@ -287,6 +320,7 @@
 
 
 <!-- Directives -->
+<br/><br/><br/><br/><br/>
 <h1>Directives</h1>
 <h4 *ngIf="true">this tag use a directive ngIf</h4>
 <h4 appRedElement>this tag use a custom directive</h4>
@@ -294,6 +328,7 @@
 
 
 <!-- Routing : Dynamic Routing & 404 Page & Child routes -->
+<br/><br/><br/><br/><br/>
 <h1>Routing : Dynamic Routing & 404 Page & Child routes</h1>
 <a routerLink="home">Home</a><br>
 <a routerLink="about">About</a><br><br><br>
@@ -308,6 +343,7 @@
 
 
 <!-- Lazy loading in Angular -->
+<br/><br/><br/><br/><br/>
 <h1>Lazy loading in Angular</h1>
 <ul>
     <li><a routerLink="admin/authentification">Authentification</a></li>
@@ -317,6 +353,7 @@
 
 
 <!-- Service -->
+<br/><br/><br/><br/><br/>
 <h1>Service</h1>
 <ul >
     <li>{{member|json}}</li>
@@ -324,6 +361,7 @@
 
 
 <!-- Lazy loading component in angular -->
+<br/><br/><br/><br/><br/>
 <h1>Lazy loading component in angular</h1>
-<button (click)="loadAdmin()">Load Admin component</button>
-<button (click)="loadUser()">Load User component</button>
+<button (click)="loadAdmin()">Load Admin component</button><br/><br/>
+<button (click)="loadUser()">Load User component</button><br/><br/>

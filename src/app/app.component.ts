@@ -20,8 +20,6 @@ export class AppComponent {
       this.member=data;
       console.warn(data)
     });
-
-    
   }
 
 
