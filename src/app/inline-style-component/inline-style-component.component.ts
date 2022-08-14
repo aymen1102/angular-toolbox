@@ -5,7 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './inline-style-component.component.html',
   styles: [
     `.custom{
-      color:green
+      color:green;
+      font-weight:bold;
     }`
   ]
 })

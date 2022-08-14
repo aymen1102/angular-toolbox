@@ -26,6 +26,7 @@ import { AboutCompanyComponent } from './about-company/about-company.component';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersModule } from './customers/customers.module';
+import { ObservableComponent } from './observable/observable.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CustomersModule } from './customers/customers.module';
     UserComponent,
     NoPageComponent,
     AboutCompanyComponent,
-    AboutMeComponent
+    AboutMeComponent,
+    ObservableComponent
   ],
   imports: [
     BrowserModule,

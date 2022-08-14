@@ -1,2 +1,7 @@
-<input type="text" #box>
-<button (click)="updateDataEvent.emit(box.value)">Update Data</button>
+<h5>{{item}}</h5>
+
+<ng-template [ngIf]="displaySecondBlock">
+    <label>This input is in the child component :  </label><br/>
+    <input type="text" #box><br/>
+    <button (click)="updateInputTextEvent.emit(box.value)">Update Input text</button>
+</ng-template>

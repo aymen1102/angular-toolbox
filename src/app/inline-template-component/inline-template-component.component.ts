@@ -4,8 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-inline-template-component',
   template: `
     <h4>
-      inline-template-component works!
-</h4>
+      Inline template component works without HTML file !
+    </h4>
   `,
   styleUrls: ['./inline-template-component.component.css']
 })

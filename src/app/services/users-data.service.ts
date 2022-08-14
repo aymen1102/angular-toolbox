@@ -4,12 +4,14 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class MemberDataService {
+export class UserDataService {
+
+  url:string="https://randomuser.me/api/";
 
   constructor(private http:HttpClient) { }
 
-  url="https://randomuser.me/api/";
-  member(){
+  getUsers(){
     return this.http.get(this.url);
   }
+  
 }

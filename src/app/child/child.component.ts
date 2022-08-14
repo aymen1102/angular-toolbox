@@ -6,13 +6,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./child.component.css']
 })
 export class ChildComponent implements OnInit {
-
-  @Input() item = 0;
-  @Output() updateDataEvent = new EventEmitter<string>();
+  @Input() displaySecondBlock:boolean=false;
+  @Input() item = "";
+  @Output() updateInputTextEvent = new EventEmitter<string>();
   constructor() { }
-
-
   
+ 
+
   ngOnInit(): void {
   }
 
