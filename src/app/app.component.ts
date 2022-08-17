@@ -54,7 +54,7 @@ export class AppComponent {
     alert("This is a function with parameter called : " + age)
   }
 
-  
+
   //Else condition
   show = false;
 
@@ -64,29 +64,36 @@ export class AppComponent {
 
 
   //Loop in angular
-  users = ['Romain', 'Jack', 'Benjamin', 'Peter'];
-  userDetails = [
-    { name: 'Romain', email: 'romain@test.com', phone: '00000' },
-    { name: 'Jack', email: 'jack@test.com', phone: '1111' },
-    { name: 'Benjamin', email: 'benjamin@test.com', phone: '222222' },
-    { name: 'Peter', email: 'peter@test.com', phone: '3333' }
-  ]
-
-
   //Nested loop
+  //Reusable component
   userData = [
-    { name: 'Romain', email: 'romain@test.com', phone: '00000', accounts: ['facebook', 'gmail'] },
-    { name: 'Jack', email: 'jack@test.com', phone: '1111', accounts: ['Instagram', 'gmail'] },
-    { name: 'Benjamin', email: 'benjamin@test.com', phone: '222222', accounts: ['facebook', 'TikTok'] },
-    { name: 'Peter', email: 'peter@test.com', phone: '3333', accounts: ['whatsapp', 'gmail'] }
+    { name: 'Romain', email: 'romain@gmail.com', phone: '06 21 35 56 46', accounts: ['facebook', 'gmail'] },
+    { name: 'Jack', email: 'jack@outlook.com', phone: '07 65 46 54 55', accounts: ['Instagram', 'gmail'] },
+    { name: 'Benjamin', email: 'benjamin@gmail.com', phone: '04 45 54 21 54', accounts: ['facebook', 'TikTok'] },
+    { name: 'Peter', email: 'peter@gmail.com', phone: '01 21 54 32 54', accounts: ['whatsapp', 'gmail'] }
   ]
+
+  
+  //Template reference variable
+  setTemplateVariable(templateVariable: any) {
+    console.warn(templateVariable.value)
+  }
+
+
+    //Get input field value
+    inputFieldValue = '';
+    getValue(inputFieldValue: string) {
+      console.warn(inputFieldValue);
+      this.inputFieldValue = inputFieldValue;
+    }
+  
 
   //Pass data child to component
   variableFromParent = "The variable from parent is passed to child component";
   updateVariableFromParent() {
     this.variableFromParent = "The variable is updated"
   }
-  
+
   //Pass data child to parent component
   variableFromChild = "";
   updateVariableFromChild(item: string) {
@@ -94,11 +101,11 @@ export class AppComponent {
     this.variableFromChild = item;
   }
 
-  
+
   // Service
   usersList: any;
 
-  
+
   //Pipes in Angular
   title: string = "Learn angular";
   today = Date();
@@ -111,6 +118,62 @@ export class AppComponent {
   text: string = "This is my house";
   person: any = { name: "Jack", age: 17, job: "student" }
 
+
+  //Basic form
+  userDataForm: any = {};
+  getForm1(form1: NgForm) {
+    console.warn(form1);
+    this.userDataForm = form1;
+  }
+
+
+  //Forms:Template driven form
+  getForm2(item: any) {
+    console.warn(item)
+  }
+
+
+  //Forms: Reactive form in angular
+  form4 = new FormGroup({
+    user: new FormControl('Peter'),
+    password: new FormControl('123456')
+  })
+  getForm4() {
+    console.warn(this.form4)
+  }
+
+
+  //Forms: Reactive form valid
+  form5 = new FormGroup({
+    user: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5)])
+  })
+  getForm5() {
+    console.warn(this.form5.value)
+  }
+  get user() {
+    return this.form5.get('user');
+  }
+  get password() {
+    return this.form5.get('password');
+  }
+
+
+  // Lazy loading component in angular
+  async loadAdmin() {
+    this.vcr.clear();
+    const { AdminListComponent } = await import('./admin-list/admin-list.component');
+    this.vcr.createComponent(
+      this.cfr.resolveComponentFactory(AdminListComponent)
+    )
+  }
+  async loadUser() {
+    this.vcr.clear();
+    const { UserListComponent } = await import('./user-list/user-list.component');
+    this.vcr.createComponent(
+      this.cfr.resolveComponentFactory(UserListComponent)
+    )
+  }
 
 
 
@@ -125,17 +188,6 @@ export class AppComponent {
   }
 
 
-
-
-
-  //Get input field value
-  displayVal = '';
-  getValue(val: string) {
-    console.warn(val);
-    this.displayVal = val;
-  }
-
-
   //Count
   count = 0;
   counter(type: string) {
@@ -146,13 +198,6 @@ export class AppComponent {
     this.color = "skyblue";
   }
 
-
-  //Basic form
-  userDataForm: any = {};
-  geDataForm(basicForm: NgForm) {
-    console.warn(basicForm);
-    this.userDataForm = basicForm;
-  }
 
 
   //Toggle element on button & hide and show tag 
@@ -176,24 +221,6 @@ export class AppComponent {
 
 
 
-
-
-  //Reusable component
-  usersDetails = [
-    { name: 'Romain', email: 'romain@test.com', phone: '00000' },
-    { name: 'Jack', email: 'jack@test.com', phone: '1111' },
-    { name: 'Benjamin', email: 'benjamin@test.com', phone: '222222' },
-    { name: 'Peter', email: 'peter@test.com', phone: '3333' }
-  ];
-
-  
-
-  //Template reference variable
-  getValue0(item: any) {
-    console.warn(item)
-  }
-
-
   //Basic of Typescript for angular
   genericType: number | string = 20;
   object: { name: string, phone: number } = { name: 'Ahmed', phone: 521545 }
@@ -209,55 +236,5 @@ export class AppComponent {
   getNumberType() {
     this.getAnyType(30);
   }
-
-  //Forms:Template driven form
-  loginUser(item: any) {
-    console.warn(item)
-  }
-
-
-  //Forms: Reactive form in angular
-  loginForm2 = new FormGroup({
-    user: new FormControl('Peter'),
-    password: new FormControl('123456')
-  })
-  loginUserReactive() {
-    console.warn(this.loginForm2)
-  }
-
-
-  //Forms: Reactive form valid
-  loginForm3 = new FormGroup({
-    user: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(5)])
-  })
-  loginUserReactiveValidation() {
-    console.warn(this.loginForm3.value)
-  }
-  get user() {
-    return this.loginForm3.get('user');
-  }
-  get password() {
-    return this.loginForm3.get('password');
-  }
-
-
-    // Lazy loading component in angular
-    async loadAdmin() {
-      this.vcr.clear();
-      const { AdminListComponent } = await import('./admin-list/admin-list.component');
-      this.vcr.createComponent(
-        this.cfr.resolveComponentFactory(AdminListComponent)
-      )
-    }
-  
-    async loadUser() {
-      this.vcr.clear();
-      const { UserListComponent } = await import('./user-list/user-list.component');
-      this.vcr.createComponent(
-        this.cfr.resolveComponentFactory(UserListComponent)
-      )
-    }
-
 
 }
