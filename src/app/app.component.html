@@ -99,7 +99,7 @@
 
 <!--Loop -->
 <h2>4- Loop in Angular</h2>
-<h4 *ngFor="let item of userDetails">
+<h4 *ngFor="let item of userData">
     Contact : {{item.name}} | {{item.email}} | {{item.phone}}
 </h4>
 
@@ -227,7 +227,7 @@
 <!-- basic Form -->
 <br/><br/><br/><br/><br/>
 <h1>Basic angular form</h1>
-<form #basicForm="ngForm" (submit)="geDataForm(basicForm.value)">
+<form #basicForm="ngForm" (submit)="getForm1(basicForm.value)">
     <input ngModel type="text" name="user" placeholder="Enter user name"/><br/><br/>
     <input ngModel type="text" name="email" placeholder="Enter user email"/><br/><br/>
     <input ngModel type="text" name="password" placeholder="Enter user password"/><br/><br/>
@@ -276,7 +276,7 @@
 <!-- Reusable component -->
 <br/><br/><br/><br/><br/>
 <h1>Reusable component</h1>
-<ul *ngFor="let user of usersDetails">
+<ul *ngFor="let user of userData">
     <app-user-details [item]="user"></app-user-details>
 </ul>
 
@@ -285,7 +285,7 @@
 <br/><br/><br/><br/><br/>
 <h1>Template reference variable</h1>
 <input type="text" #input>
-<button (click)="getValue0(input)">Click me</button>
+<button (click)="getValue(inputFieldValue)">Click me</button>
 
 
 <!-- basic typescript for angular -->
@@ -296,7 +296,7 @@
 <!-- Forms: Template driven form -->
 <br/><br/><br/><br/><br/>
 <h1>Forms: Template driven form</h1>
-<form #loginForm0="ngForm" (ngSubmit)="loginUser(loginForm0.value)">
+<form #loginForm0="ngForm" (ngSubmit)="getForm2(loginForm0.value)">
     <input type="text" name="name" placeholder="Enter name" ngModel><br/><br/>
     <input type="text" name="password" placeholder="Enter password" ngModel><br/><br/>
     <button>Login</button>
@@ -306,7 +306,7 @@
 <!-- Forms: Template driven form for validation -->
 <br/><br/><br/><br/><br/>
 <h1>Forms: Template driven form for validation</h1>
-<form #loginForm1="ngForm" (ngSubmit)="loginUser(loginForm1.value)">
+<form #loginForm1="ngForm" (ngSubmit)="getForm2(loginForm1.value)">
     <input type="email" required #email="ngModel" email name="email" placeholder="Enter email" ngModel>
     <br/><span *ngIf="email.invalid && email.touched" style="color:red">Please enter a valid input</span><br/>
     <input type="password" name="password" minlength=4 required #password="ngModel"  placeholder="Enter password" ngModel>
@@ -318,7 +318,7 @@
 <!-- Forms: Reactive form in angular -->
 <br/><br/><br/><br/><br/>
 <h1>Forms: Reactive form in angular</h1>
-<form [formGroup]="loginForm2" (ngSubmit)="loginUserReactive()">
+<form [formGroup]="form4" (ngSubmit)="getForm4()">
     <input type="text" name="name" placeholder="Enter name" formControlName="user"><br/><br/>
     <input type="password" name="password" placeholder="Enter password" formControlName="password"><br/><br/>
     <button>Login</button>
@@ -328,12 +328,12 @@
 <!-- Forms: Reactive validations -->
 <br/><br/><br/><br/><br/>
 <h1>Forms: Reactive form valiation</h1>
-<form [formGroup]="loginForm3" (ngSubmit)="loginUserReactiveValidation()">
+<form [formGroup]="form5" (ngSubmit)="getForm5()">
     <input type="text" name="name" placeholder="Enter name" formControlName="user">
     <br/><span *ngIf="user && user.invalid && user.touched" style="color:red">This input is not valid</span><br/>
     <input type="password" name="password" placeholder="Enter password" formControlName="password">
     <br/><span *ngIf="password && password.invalid && password.touched" style="color:red">Password input is not valid</span><br/>
-    <button [disabled]="loginForm3.invalid">Login</button>
+    <button [disabled]="form5.invalid">Login</button>
 </form>
 
 
@@ -343,7 +343,7 @@
 <input #box5 type="text" placeholder="Enter name" name="username" (keyup)="getValue(box5.value)"/><br/><br/>
 <input #box6 type="text" placeholder="Enter name" name="username"/><br/><br/>
 <button (click)="getValue(box6.value)">Click me !</button><br/><br/>
-<h4>Box value is : {{displayVal}}</h4><br/><br/>
+<h4>Box value is : {{inputFieldValue}}</h4><br/><br/>
 
 
 <!--How to start with style -->
