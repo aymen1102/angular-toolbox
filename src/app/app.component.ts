@@ -1,8 +1,6 @@
-import { Component, ViewContainerRef, ComponentFactoryResolver, EventEmitter, Output } from '@angular/core';
-import { FormsModule, NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Component, ViewContainerRef, ComponentFactoryResolver } from '@angular/core';
+import { NgForm, FormGroup, FormControl, Validators } from '@angular/forms';
 import { userInformation } from './interfaces/userInformation';
-import { AdminListComponent } from './admin-list/admin-list.component';
-import { UserListComponent } from './user-list/user-list.component';
 import { UserDataService } from './services/users-data.service';
 
 @Component({
@@ -34,24 +32,25 @@ export class AppComponent {
 
   //Property binding
   name = "Peter";
-  isDisabled = false;
+  isDisabled = true;
 
-
-  //Important events
-  getData(text: string) {
-    console.warn(text);
-  }
 
   //Two way binding
   inputValue: string = "";
 
 
+  //Important events
+  displayWarning(text: string) {
+    console.warn(text);
+  }
+
+
   //Function
   getName() {
-    alert("This is a function called !")
+    alert("This is a called function !")
   }
   getAge(age: number) {
-    alert("This is a function with parameter called : " + age)
+    alert("This is a called function with parameter : " + age)
   }
 
 

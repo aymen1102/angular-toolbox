@@ -3,13 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MyFirstComponentComponent } from './my-first-component/my-first-component.component';
-import { InlineStyleComponentComponent } from './inline-style-component/inline-style-component.component';
-import { InlineTemplateComponentComponent } from './inline-template-component/inline-template-component.component';
-import { MyFirstModuleModule } from './my-first-module/my-first-module.module';
+import { MyFirstComponentComponent } from './component/my-first-component/my-first-component.component';
+import { InlineStyleComponentComponent } from './component/inline-style-component/inline-style-component.component';
+import { InlineTemplateComponentComponent } from './component/inline-template-component/inline-template-component.component';
+import { ExampleModule } from './module/example.module';
 import { HeaderComponent } from './header/header.component';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -51,7 +50,7 @@ import { ObservableComponent } from './observable/observable.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MyFirstModuleModule,
+    ExampleModule,
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,

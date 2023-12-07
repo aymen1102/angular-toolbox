@@ -1,46 +1,30 @@
-<!--Component-->
+<!-- Component -->
 <h1>Component</h1>
 <app-my-first-component></app-my-first-component>
 <app-inline-style-component></app-inline-style-component>
 <app-inline-template-component></app-inline-template-component>
 
 
-<!--Module-->
+<!-- Module -->
 <br/><br/><br/><br/><br/>
 <h1>Module</h1>
 <app-component-inside-module></app-component-inside-module>
 
 
-<!--Interpolation-->
+<!-- Interpolation -->
 <br/><br/><br/><br/><br/>
 <h1>Interpolation</h1>
 <h4>Get angular version : {{version}}</h4>
 <h4>Get value from function : {{getValueFromFunction()}}</h4>
-<h4>The sum of 4 and 2 is : {{ 6 + 2 }}</h4>
-<h4>Is num equal to 23 : {{ num == 23 }}</h4>
-<h4>Is num equal to 24 : {{ num == 24 }}</h4>
-<!--<h4>{{num=24}}</h4>    Compile Error--> 
-<!--<h4>{{typeof num}}</h4>    Compile Error-->
-<!--<h4>{{new num1}}</h4>    Compile Error-->
-<!--<h4>{{num++}}</h4>    Compile Error-->
+<h4>The sum of 4 and 2 is : {{ 4 + 2 }}</h4>
+<h4>Is num equal to 23 : {{ num === 23 }}</h4>
+<h4>Is num equal to 24 : {{ num === 24 }}</h4>
 
 
-<!--Property Binding -->
+<!-- Property Binding -->
 <br/><br/><br/><br/><br/>
 <h1>Property Binding</h1>
-<input type="text" value={{name}} disabled={{isDisabled}}/><br/><br/>
 <input type="text" [value]=name [disabled]=isDisabled/>
-
-
-<!--Important Events Binding-->
-<br/><br/><br/><br/><br/>
-<h1>Important Events</h1>
-<button (click)="getData('button click event')">Call function</button><br/><br/>
-<input #box1 type ="text" placeholder="keyup box" (keyup)="getData(box1.value)"/><br/><br/>
-<input #box2 type ="text" placeholder="keydown box" (keydown)="getData(box2.value)"/><br/><br/>
-<input #box3 type ="text" placeholder="blur box" (blur)="getData(box3.value)"/><br/><br/>
-<input #box4 type ="text" placeholder="input box" (input)="getData(box4.value)"/><br/><br/>
-<h4 (mouseover)="getData('mouse over')">Mouse over here</h4>
 
 
 <!-- Two way binding -->
@@ -50,7 +34,18 @@
 <h3>{{inputValue}}</h3>
 
 
-<!--Function-->
+<!-- Important Events Binding -->
+<br/><br/><br/><br/><br/>
+<h1>Important Events</h1>
+<button (click)="displayWarning('button click event')">Call function</button><br/><br/>
+<input #input1 type ="text" placeholder="keyup box" (keyup)="displayWarning(input1.value)"/><br/><br/>
+<input #input2 type ="text" placeholder="keydown box" (keydown)="displayWarning(input2.value)"/><br/><br/>
+<input #input3 type ="text" placeholder="blur box" (blur)="displayWarning(input3.value)"/><br/><br/>
+<input #input4 type ="text" placeholder="input box" (input)="displayWarning(input4.value)"/><br/><br/>
+<h4 (mouseover)="displayWarning('mouse over')">Mouse over here</h4>
+
+
+<!-- Function -->
 <br/><br/><br/><br/><br/>
 <h1>Functions</h1>
 <button (click)="getName()">Call function</button><br/><br/>
@@ -62,9 +57,8 @@
 <h1>Directives : Structural directives</h1>
 
 
-<!--if-Else -->
+<!-- if-Else -->
 <h2>1- If Else</h2>
-<h4 *ngIf="true">This tag use a directive ngIf</h4>
 <h4 *ngIf="show; then ifBlock else elseBlock"></h4>
 <ng-template #ifBlock>
     <h4>I'am inside the if condition</h4>
@@ -74,7 +68,7 @@
 </ng-template>
 
 
-<!--Multiple condition -->
+<!-- Multiple condition -->
 <h2>2- If Else (Multiple condition)</h2>
 <ng-template [ngIf]="color==='red'">
     <h4 style="color:red">Red color</h4>
@@ -87,7 +81,7 @@
 </ng-template>
 
 
-<!--Switch case -->
+<!-- Switch case -->
 <h2>3- Switch case</h2>
 <div [ngSwitch]="color">
     <h4 *ngSwitchCase="'red'" style="color:red">Red color</h4>
@@ -97,34 +91,41 @@
 </div>
 
 
-<!--Loop -->
+<!-- Loop -->
 <h2>4- Loop in Angular</h2>
-<h4 *ngFor="let item of userData">
-    Contact : {{item.name}} | {{item.email}} | {{item.phone}}
+<h4 *ngFor="let data of userData">
+    Contact : {{data.name}} | {{data.email}} | {{data.phone}}
 </h4>
 
 
-<!-- Nested loop-->
+<!-- Nested loop -->
 <h2>5- Nested Loop</h2>
-<ul *ngFor="let item of userData">
-    <li>{{item.name}}</li>
-    <li>{{item.email}}</li>
-    <li>{{item.phone}}</li>
-    <ul *ngFor="let account of item.accounts">
+<ul *ngFor="let data of userData">
+    <li>{{data.name}}</li>
+    <li>{{data.email}}</li>
+    <li>{{data.phone}}</li>
+    <ul *ngFor="let account of data.accounts">
         <li>{{account}}</li>
     </ul>
 </ul>
 
+
+<br/><br/><br/><br/><br/>
 <h1>Directives : Attributes directives</h1>
+<!-- Ng template -->
 <h2>1- Ng template</h2>
 <ng-template [ngIf]="true">
     <h4>Ng template is an attribute directive</h4>
 </ng-template>
+
+
+<!-- Ng style -->
 <h2>2- Ng style</h2>
 <input [(ngModel)]="color" /> 
 <div [ngStyle]="{'color': color}">ngStyle is an attribute directive</div>
 
 
+<br/><br/><br/><br/><br/>
 <h1>Directives : Custom directives</h1>
 <h4 appRedElement>This tag use a custom directive</h4>
 

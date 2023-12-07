@@ -15,4 +15,4 @@ import { ComponentInsideModuleComponent } from './component-inside-module/compon
     ComponentInsideModuleComponent
   ]
 })
-export class MyFirstModuleModule { }
+export class ExampleModule { }

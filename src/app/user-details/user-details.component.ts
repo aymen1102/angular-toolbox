@@ -5,16 +5,12 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css']
 })
-export class UserDetailsComponent implements OnInit {
-
-  constructor() { }
+export class UserDetailsComponent {
 
   @Input() item:{name:string,email:string,phone:string}={
     name: '',
     email: '',
     phone: ''
-  }
-  ngOnInit(): void {
   }
 
 }

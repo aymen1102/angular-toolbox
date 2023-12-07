@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-inline-template-component',
@@ -9,11 +9,5 @@ import { Component, OnInit } from '@angular/core';
   `,
   styleUrls: ['./inline-template-component.component.css']
 })
-export class InlineTemplateComponentComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class InlineTemplateComponentComponent {
 }
