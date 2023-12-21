@@ -12,11 +12,9 @@ export class AppComponent {
 
   constructor(
     private userDataService: UserDataService,
-    private vcr: ViewContainerRef,
-    private cfr: ComponentFactoryResolver) {
-
+    private vcr: ViewContainerRef) {
     // get Users from 
-    userDataService.getUsers().subscribe((userData) => {
+    userDataService.getUsers().subscribe(userData => {
       this.usersList = userData;
     });
   }
@@ -79,25 +77,25 @@ export class AppComponent {
   }
 
 
-    //Get input field value
-    inputFieldValue = '';
-    getValue(inputFieldValue: string) {
-      console.warn(inputFieldValue);
-      this.inputFieldValue = inputFieldValue;
-    }
+  //Get input field value
+  inputFieldValue = '';
+  getValue(inputFieldValue: string) {
+    console.warn(inputFieldValue);
+    this.inputFieldValue = inputFieldValue;
+  }
   
 
   //Pass data child to component
-  variableFromParent = "The variable from parent is passed to child component";
-  updateVariableFromParent() {
-    this.variableFromParent = "The variable is updated"
+  text = "This text is from parent component";
+  updateTextFromParent() {
+    this.text = "The text is pushed to child"
   }
 
+
   //Pass data child to parent component
-  variableFromChild = "";
-  updateVariableFromChild(item: string) {
-    console.warn(item);
-    this.variableFromChild = item;
+  textFromChild = "This text is from parent component";
+  updateTextFromChild(item: string) {
+    this.textFromChild = item;
   }
 
 
@@ -114,31 +112,31 @@ export class AppComponent {
 
 
   //Advanced pipes in Angular
-  text: string = "This is my house";
+  statement: string = "This is my house";
   person: any = { name: "Jack", age: 17, job: "student" }
 
 
   //Basic form
   userDataForm: any = {};
-  getForm1(form1: NgForm) {
+  submitForm1(form1: NgForm) {
     console.warn(form1);
     this.userDataForm = form1;
   }
 
 
-  //Forms:Template driven form
-  getForm2(item: any) {
+  //Forms :Template driven form
+  submitForm2(item: any) {
     console.warn(item)
   }
 
 
   //Forms: Reactive form in angular
-  form4 = new FormGroup({
+  reactiveForm = new FormGroup({
     user: new FormControl('Peter'),
     password: new FormControl('123456')
   })
-  getForm4() {
-    console.warn(this.form4)
+  submitForm3() {
+    console.warn(this.reactiveForm)
   }
 
 
@@ -147,7 +145,7 @@ export class AppComponent {
     user: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(5)])
   })
-  getForm5() {
+  submitForm4() {
     console.warn(this.form5.value)
   }
   get user() {
@@ -156,24 +154,6 @@ export class AppComponent {
   get password() {
     return this.form5.get('password');
   }
-
-
-  // Lazy loading component in angular
-  async loadAdmin() {
-    this.vcr.clear();
-    const { AdminListComponent } = await import('./admin-list/admin-list.component');
-    this.vcr.createComponent(
-      this.cfr.resolveComponentFactory(AdminListComponent)
-    )
-  }
-  async loadUser() {
-    this.vcr.clear();
-    const { UserListComponent } = await import('./user-list/user-list.component');
-    this.vcr.createComponent(
-      this.cfr.resolveComponentFactory(UserListComponent)
-    )
-  }
-
 
 
   // Model and interfaces

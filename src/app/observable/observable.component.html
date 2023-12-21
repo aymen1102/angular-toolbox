@@ -1,6 +1,10 @@
-<h1>Observables</h1>
+<h1>Observable 1</h1>
 <h4 style="color: brown;">{{name}}</h4><br/>
 
-
-<button (click)="startObservable2()">Start Observable</button>
+<h1>Observable 2</h1>
+<button (click)="startObservable2()">Start Observable 2</button>
 <h4 style="color: rgb(186, 149, 0);">{{letter}}</h4><br/>
+
+<h1>Observable 3 </h1>
+<button (click)="startObservable3()">Start Observable 3</button>
+<h4 *ngFor="let user of users">{{user?.email}}</h4><br/>

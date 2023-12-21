@@ -7,6 +7,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class ChildComponent {
   @Input() displaySecondBlock:boolean=false;
-  @Input() item = "";
-  @Output() updateInputTextEvent = new EventEmitter<string>();
+  @Input() text = "";
+  @Output() pushTextToParentEvent = new EventEmitter<string>();
 }

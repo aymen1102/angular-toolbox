@@ -146,29 +146,24 @@
 
 <!-- Pass data parent to child component -->
 <br/><br/><br/><br/><br/>
-<h1>Pass data parent to child component</h1>
-<app-child [item]="variableFromParent"></app-child>
-<button (click)="updateVariableFromParent()">Update Child Component</button>
+<h1>Push parent data to child component</h1>
+<app-child [text]="text"></app-child>
+<button (click)="updateTextFromParent()">PUSH TO CHILD</button>
 
 
 <!-- Pass data child to parent component -->
 <br/><br/><br/><br/><br/>
-<h1>Send data child to parent component</h1>
+<h1>Push child data to parent component</h1>
 <app-child [displaySecondBlock]=true 
-           (updateInputTextEvent)="updateVariableFromChild($event)">
+           (pushTextToParentEvent)="updateTextFromChild($event)">
 </app-child><br/><br/><br/>
-<h4>This text is in the parent component : {{variableFromChild}}</h4>
+<h4>This text is in the parent component : {{textFromChild}}</h4>
 
 
 <!-- Observable -->
 <br/><br/><br/><br/><br/>
 <app-observable></app-observable>
 
-<!-- Promises -->
-
-<!-- Observable -->
-
-<!-- Subject -->
 
 <!-- Service -->
 <br/><br/><br/><br/><br/>
@@ -180,7 +175,7 @@
 
 <!-- basic of pipes in angular -->
 <br/><br/><br/><br/><br/>
-<h1>basic of pipes in angular</h1>
+<h1>Basics of pipes in angular</h1>
 <h4>Display the title of the book : {{title}}</h4>
 <h4>With lower case : {{title|lowercase}}</h4>
 <h4>With upper case : {{title|uppercase}}</h4>
@@ -191,14 +186,14 @@
 
 
 
-<!-- advance pipes -->
+<!-- advanced pipes -->
 <br/><br/><br/><br/><br/>
-<h1>Advance pipes   </h1>
-<h4>{{text|slice :11:16}}</h4>
+<h1>Advanced pipes   </h1>
+<h4>{{statement|slice :11:16}}</h4>
 <h4>{{person}}</h4>
 <h4>{{person|json}}</h4>
 <h4>{{person|json|uppercase}}</h4>
-<h4>{{003.3400|number:'1.2-3'}}</h4>
+<h4>{{003.3400|number:'1.2-3'}}</h4> 
 <h4>{{100|currency:'USD'}}</h4>
 
 
@@ -208,37 +203,64 @@
 <h4>{{30|convertUsdToGbp:0.76}}</h4>
 
 
-<!-- Lazy loading component in angular -->
+<!-- Forms: basic Form -->
 <br/><br/><br/><br/><br/>
-<h1>Lazy loading component in angular</h1>
-<button (click)="loadAdmin()">Load Admin component</button><br/><br/>
-<button (click)="loadUser()">Load User component</button><br/><br/>
-
-
-<!-- Lazy loading in Angular -->
-<br/><br/><br/><br/><br/>
-<h1>Lazy loading in Angular</h1>
-<ul>
-    <li><a routerLink="admin/authentification">Authentification</a></li>
-    <li><a routerLink="admin/register">Register</a></li>
-</ul>
-<router-outlet></router-outlet>
-
-
-<!-- basic Form -->
-<br/><br/><br/><br/><br/>
-<h1>Basic angular form</h1>
-<form #basicForm="ngForm" (submit)="getForm1(basicForm.value)">
-    <input ngModel type="text" name="user" placeholder="Enter user name"/><br/><br/>
-    <input ngModel type="text" name="email" placeholder="Enter user email"/><br/><br/>
-    <input ngModel type="text" name="password" placeholder="Enter user password"/><br/><br/>
+<h1>Forms: Basic angular form</h1>
+<form #basicForm="ngForm" (submit)="submitForm1(basicForm.value)">
+    <input ngModel type="text"     name="user"     placeholder="Enter user name"/><br/><br/>
+    <input ngModel type="email"    name="email"    placeholder="Enter user email"/><br/><br/>
+    <input ngModel type="password" name="password" placeholder="Enter user password"/><br/><br/>
     <button>Register</button>
-</form>
+</form><br/>
 <ul>
     <li>{{userDataForm.user}}</li>
     <li>{{userDataForm.email}}</li>
     <li>{{userDataForm.password}}</li>
 </ul>
+
+
+<!-- Forms: Template driven form -->
+<br/><br/><br/><br/><br/>
+<h1>Forms: Template driven form</h1>
+<form #drivenForm="ngForm" (ngSubmit)="submitForm2(drivenForm.value)">
+    <input ngModel type="text"     name="name"     placeholder="Enter name"><br/><br/>
+    <input ngModel type="password" name="password" placeholder="Enter password"><br/><br/>
+    <button>Login</button>
+</form> 
+
+
+<!-- Forms: Template driven form for validation -->
+<br/><br/><br/><br/><br/>
+<h1>Forms: Template driven form for validation</h1>
+<form #drivenValidationForm="ngForm" (ngSubmit)="submitForm2(drivenValidationForm.value)">
+    <input ngModel type="email"    name="email"    #email="ngModel"    placeholder="Enter email" ><br/>
+    <span *ngIf="email.invalid && email.touched" style="color:red">Please enter a valid input</span><br/>
+    <input ngModel type="password" name="password" #password="ngModel" placeholder="Enter password"><br/>
+    <span *ngIf="password.invalid && password.touched" style="color:red">Please enter a valid input</span><br/>
+    <button [disabled]="drivenValidationForm.invalid">Login</button>
+</form>
+
+
+<!-- Forms: Reactive form in angular -->
+<br/><br/><br/><br/><br/>
+<h1>Forms: Reactive form in angular</h1>
+<form [formGroup]="reactiveForm" (ngSubmit)="submitForm3()">
+    <input type="text" name="name" placeholder="Enter name" formControlName="user"><br/><br/>
+    <input type="password" name="password" placeholder="Enter password" formControlName="password"><br/><br/>
+    <button>Login</button>
+</form> 
+
+
+<!-- Forms: Reactive validations -->
+<br/><br/><br/><br/><br/>
+<h1>Forms: Reactive form valiation</h1>
+<form [formGroup]="form5" (ngSubmit)="submitForm4()">
+    <input type="text" name="name" placeholder="Enter name" formControlName="user">
+    <br/><span *ngIf="user && user.invalid && user.touched" style="color:red">This input is not valid</span><br/>
+    <input type="password" name="password" placeholder="Enter password" formControlName="password">
+    <br/><span *ngIf="password && password.invalid && password.touched" style="color:red">Password input is not valid</span><br/>
+    <button [disabled]="form5.invalid">Login</button>
+</form>
 
 
 <!-- Toggle Element -->
@@ -292,50 +314,6 @@
 <!-- basic typescript for angular -->
 <br/><br/><br/><br/><br/>
 <h1>basic typescript for angular</h1>
-
-
-<!-- Forms: Template driven form -->
-<br/><br/><br/><br/><br/>
-<h1>Forms: Template driven form</h1>
-<form #loginForm0="ngForm" (ngSubmit)="getForm2(loginForm0.value)">
-    <input type="text" name="name" placeholder="Enter name" ngModel><br/><br/>
-    <input type="text" name="password" placeholder="Enter password" ngModel><br/><br/>
-    <button>Login</button>
-</form> 
-
-
-<!-- Forms: Template driven form for validation -->
-<br/><br/><br/><br/><br/>
-<h1>Forms: Template driven form for validation</h1>
-<form #loginForm1="ngForm" (ngSubmit)="getForm2(loginForm1.value)">
-    <input type="email" required #email="ngModel" email name="email" placeholder="Enter email" ngModel>
-    <br/><span *ngIf="email.invalid && email.touched" style="color:red">Please enter a valid input</span><br/>
-    <input type="password" name="password" minlength=4 required #password="ngModel"  placeholder="Enter password" ngModel>
-    <br/><span *ngIf="password.invalid && password.touched" style="color:red">Please enter a valid input</span><br/>
-    <button [disabled]="loginForm1.invalid">Login</button>
-</form>
-
-
-<!-- Forms: Reactive form in angular -->
-<br/><br/><br/><br/><br/>
-<h1>Forms: Reactive form in angular</h1>
-<form [formGroup]="form4" (ngSubmit)="getForm4()">
-    <input type="text" name="name" placeholder="Enter name" formControlName="user"><br/><br/>
-    <input type="password" name="password" placeholder="Enter password" formControlName="password"><br/><br/>
-    <button>Login</button>
-</form> 
-
-
-<!-- Forms: Reactive validations -->
-<br/><br/><br/><br/><br/>
-<h1>Forms: Reactive form valiation</h1>
-<form [formGroup]="form5" (ngSubmit)="getForm5()">
-    <input type="text" name="name" placeholder="Enter name" formControlName="user">
-    <br/><span *ngIf="user && user.invalid && user.touched" style="color:red">This input is not valid</span><br/>
-    <input type="password" name="password" placeholder="Enter password" formControlName="password">
-    <br/><span *ngIf="password && password.invalid && password.touched" style="color:red">Password input is not valid</span><br/>
-    <button [disabled]="form5.invalid">Login</button>
-</form>
 
 
 <!--Get input field value -->

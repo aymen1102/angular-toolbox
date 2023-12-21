@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -8,10 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class ObservableComponent implements OnInit {
 
-  name:any;
-  letter:any;
+  name: string = '';
+  letter: string = '';
+  users: any;
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.observable1.subscribe((name)=>{
@@ -19,8 +21,8 @@ export class ObservableComponent implements OnInit {
     })
   }
 
-  // First way to use Observable
-  observable1 = new Observable((observer)=>{
+  // Observable 1
+  observable1 = new Observable<string>(observer => {
     console.log('Observable starts')
     setTimeout(()=>{observer.next("Fares")},5000);
     setTimeout(()=>{observer.next("Jack")},4000);
@@ -31,14 +33,14 @@ export class ObservableComponent implements OnInit {
   });
 
 
-  //second way to create Observable =
-  observable2 = Observable.create((observer0: { next: (arg0: string) => void; }) => {
-    setTimeout(()=>{observer0.next("A")},5000);
-    setTimeout(()=>{observer0.next("B")},4000);
-    setTimeout(()=>{observer0.next("C")},3000);
-    setTimeout(()=>{observer0.next("D")},2000);
-    setTimeout(()=>{observer0.next("E")},1000);
-    setTimeout(()=>{observer0.next("F")},500);
+  // Observable 2
+  observable2 = new Observable<string>(observer => {
+    setTimeout(() => observer.next("A"), 5000);
+    setTimeout(() => observer.next("B"), 4000);
+    setTimeout(() => observer.next("C"), 3000);
+    setTimeout(() => observer.next("D"), 2000);
+    setTimeout(() => observer.next("E"), 1000);
+    setTimeout(() => observer.next("F"), 500);
   });
 
   startObservable2(){
@@ -48,4 +50,15 @@ export class ObservableComponent implements OnInit {
   }
 
 
+  // Observable 3
+  getData(): Observable<any> {
+    const url = 'https://jsonplaceholder.typicode.com/users';
+    return this.http.get(url);
+  }
+
+  startObservable3(){
+    this.getData().subscribe(data => {
+      this.users = data;
+    })
+  }
 }
